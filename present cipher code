@@ -1,0 +1,192 @@
+module S_BOX(
+   input        clock,
+  input        reset,
+  input  [3:0] state_in,
+  output [3:0] state_out
+);
+  wire  _T = state_in == 4'h0; // @[present_cipher_chisel.scala 12:16]
+  wire  _T_1 = state_in == 4'h1; // @[present_cipher_chisel.scala 13:21]
+  wire  _T_2 = state_in == 4'h2; // @[present_cipher_chisel.scala 14:21]
+  wire  _T_3 = state_in == 4'h3; // @[present_cipher_chisel.scala 15:21]
+  wire  _T_4 = state_in == 4'h4; // @[present_cipher_chisel.scala 16:21]
+  wire  _T_5 = state_in == 4'h5; // @[present_cipher_chisel.scala 17:21]
+  wire  _T_6 = state_in == 4'h6; // @[present_cipher_chisel.scala 18:21]
+  wire  _T_7 = state_in == 4'h7; // @[present_cipher_chisel.scala 19:21]
+  wire  _T_8 = state_in == 4'h8; // @[present_cipher_chisel.scala 20:21]
+  wire  _T_9 = state_in == 4'h9; // @[present_cipher_chisel.scala 21:21]
+  wire  _T_10 = state_in == 4'ha; // @[present_cipher_chisel.scala 22:21]
+  wire  _T_11 = state_in == 4'hb; // @[present_cipher_chisel.scala 23:21]
+  wire  _T_12 = state_in == 4'hc; // @[present_cipher_chisel.scala 24:21]
+  wire  _T_13 = state_in == 4'hd; // @[present_cipher_chisel.scala 25:21]
+  wire  _T_14 = state_in == 4'he; // @[present_cipher_chisel.scala 26:21]
+  wire [1:0] _GEN_0 = _T_14 ? 2'h1 : 2'h2; // @[present_cipher_chisel.scala 26:31]
+  wire [2:0] _GEN_1 = _T_13 ? 3'h7 : {{1'd0}, _GEN_0}; // @[present_cipher_chisel.scala 25:31]
+  wire [2:0] _GEN_2 = _T_12 ? 3'h4 : _GEN_1; // @[present_cipher_chisel.scala 24:31]
+  wire [3:0] _GEN_3 = _T_11 ? 4'h8 : {{1'd0}, _GEN_2}; // @[present_cipher_chisel.scala 23:31]
+  wire [3:0] _GEN_4 = _T_10 ? 4'hf : _GEN_3; // @[present_cipher_chisel.scala 22:31]
+  wire [3:0] _GEN_5 = _T_9 ? 4'he : _GEN_4; // @[present_cipher_chisel.scala 21:31]
+  wire [3:0] _GEN_6 = _T_8 ? 4'h3 : _GEN_5; // @[present_cipher_chisel.scala 20:31]
+  wire [3:0] _GEN_7 = _T_7 ? 4'hd : _GEN_6; // @[present_cipher_chisel.scala 19:31]
+  wire [3:0] _GEN_8 = _T_6 ? 4'ha : _GEN_7; // @[present_cipher_chisel.scala 18:31]
+  wire [3:0] _GEN_9 = _T_5 ? 4'h0 : _GEN_8; // @[present_cipher_chisel.scala 17:31]
+  wire [3:0] _GEN_10 = _T_4 ? 4'h9 : _GEN_9; // @[present_cipher_chisel.scala 16:31]
+  wire [3:0] _GEN_11 = _T_3 ? 4'hb : _GEN_10; // @[present_cipher_chisel.scala 15:31]
+  wire [3:0] _GEN_12 = _T_2 ? 4'h6 : _GEN_11; // @[present_cipher_chisel.scala 14:31]
+  wire [3:0] _GEN_13 = _T_1 ? 4'h5 : _GEN_12; // @[present_cipher_chisel.scala 13:31]
+  assign state_out = _T ? 4'hc : _GEN_13; // @[present_cipher_chisel.scala 12:36 present_cipher_chisel.scala 13:41 present_cipher_chisel.scala 14:41 present_cipher_chisel.scala 15:41 present_cipher_chisel.scala 16:41 present_cipher_chisel.scala 17:41 present_cipher_chisel.scala 18:41 present_cipher_chisel.scala 19:41 present_cipher_chisel.scala 20:41 present_cipher_chisel.scala 21:41 present_cipher_chisel.scala 22:41 present_cipher_chisel.scala 23:41 present_cipher_chisel.scala 24:41 present_cipher_chisel.scala 25:41 present_cipher_chisel.scala 26:41 present_cipher_chisel.scala 27:23]
+endmodule
+
+
+module P_BOX(
+   input         clock,
+ input         reset,
+ input  [63:0] state_in,
+ output [63:0] state_out
+);
+ wire [7:0] _T_70 = {state_in[35],state_in[39],state_in[43],state_in[47],state_in[51],state_in[55],state_in[59],state_in[63]}; // @[Cat.scala 29:58]
+ wire [15:0] _T_78 = {state_in[3],state_in[7],state_in[11],state_in[15],state_in[19],state_in[23],state_in[27],state_in[31],_T_70}; // @[Cat.scala 29:58]
+ wire [7:0] _T_85 = {state_in[34],state_in[38],state_in[42],state_in[46],state_in[50],state_in[54],state_in[58],state_in[62]}; // @[Cat.scala 29:58]
+ wire [31:0] _T_94 = {state_in[2],state_in[6],state_in[10],state_in[14],state_in[18],state_in[22],state_in[26],state_in[30],_T_85,_T_78}; // @[Cat.scala 29:58]
+ wire [7:0] _T_101 = {state_in[33],state_in[37],state_in[41],state_in[45],state_in[49],state_in[53],state_in[57],state_in[61]}; // @[Cat.scala 29:58]
+ wire [15:0] _T_109 = {state_in[1],state_in[5],state_in[9],state_in[13],state_in[17],state_in[21],state_in[25],state_in[29],_T_101}; // @[Cat.scala 29:58]
+ wire [7:0] _T_116 = {state_in[32],state_in[36],state_in[40],state_in[44],state_in[48],state_in[52],state_in[56],state_in[60]}; // @[Cat.scala 29:58]
+ wire [31:0] _T_125 = {state_in[0],state_in[4],state_in[8],state_in[12],state_in[16],state_in[20],state_in[24],state_in[28],_T_116,_T_109}; // @[Cat.scala 29:58]
+ assign state_out = {_T_125,_T_94}; // @[present_cipher_chisel.scala 9:12]
+endmodule
+
+module presentcipher (
+        output  reg [63:0] ciphertext,
+        output  [63:0] state_out,   // data output port
+        input  [63:0] state_in,   // data input port
+        input  [79:0] key,    // key input port
+        input         sel,   // data load command
+        input         enc_gen,
+        input en,
+        input out_ready	,
+        input clock		  // clock
+    );
+
+//---------wires, registers----------
+reg  [79:0] kreg;               // key register
+reg  [63:0] dreg;               // data register
+reg  [4:0]  round;              // round counter
+wire [63:0] dat1,dat2,dat3;     // intermediate data
+       // intermediate subkey data
+
+initial round = 5'b 00000;
+//---------combinational processes----------
+
+assign dat1 = dreg ^ kreg[79:16];     // add round key
+assign state_out = dat1;
+
+
+
+always @(negedge clock)
+begin  
+                   // output ciphertext
+if ( out_ready == 1'b1)
+   ciphertext <= state_out; // @[presentcipher.scala 8:11]
+end
+//---------instantiations--------------------
+
+wire[79:0] kdat2;//sub key update
+wire [3:0] USBOXKEY_state_in; // @[present_cipher_chisel_.scala 45:20]
+ //@[present_cipher_chisel_.scala 45:20]
+  wire [79:0] kdat1 = {kreg[18:0],kreg[79:19]}; // @[Cat.scala 29:58]
+  wire [4:0] _T_6 = kdat1[19:15] ^ round; // @[present_cipher_chisel_.scala 50:37]
+
+   wire [3:0] USBOXKEY_state_out; //
+       assign USBOXKEY_state_in = kdat1[79:76]; //
+    wire[4:0]_T_5=USBOXKEY_state_out;
+
+  wire [59:0] _T_8 = {kdat1[75:20]}; // @[Cat.scala 29:58]
+  wire [14:0] _T_9 = {kdat1[14:0]}; // @[Cat.scala 29:58]
+  S_BOX USBOXKEY ( // @[present_cipher_chisel_.scala 45:20]
+    .state_in(USBOXKEY_state_in),
+    .state_out(USBOXKEY_state_out)
+  );
+  assign kdat2[14:0] = _T_9; // @[present_cipher_chisel_.scala 49:9]@[present_cipher_chisel_.scala 46:18]
+
+  assign kdat2[19:15] = _T_6; // @[present_cipher_chisel_.scala 49:9]@[present_cipher_chisel_.scala 46:18]
+  assign kdat2[75:20] = _T_8; // @[present_cipher_chisel_.scala 49:9]@[present_cipher_chisel_.scala 46:18]
+ assign kdat2[79:76]=_T_5;
+genvar i;
+generate
+    for (i=0; i<64; i=i+4) begin: sbox_loop
+       S_BOX USBOX( .state_out(dat2[i+3:i]), .state_in(dat1[i+3:i]) );
+    end
+endgenerate
+
+// instantiate pbox (p-layer)
+P_BOX UPBOX    ( .state_out(dat3), .state_in(dat2) );
+//---------sequential processes----------
+// Load data and Load/reload key into key register
+`ifdef RANDOMIZE_REG_INIT
+  reg [95:0] _RAND_0;
+  reg [31:0] _RAND_1;
+  reg [63:0] _RAND_2;
+`endif // RANDOMIZE_REG_INIT
+  wire  _T = ~sel; // @[load_data.scala 17:17]
+  wire [4:0] _T_3 = round + 5'h1; // @[load_data.scala 30:29]
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {3{`RANDOM}};
+  kreg = _RAND_0[79:0];
+  _RAND_1 = {1{`RANDOM}};
+  round = _RAND_1[4:0];
+  _RAND_2 = {2{`RANDOM}};
+  dreg = _RAND_2[63:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
+  always @(posedge clock) begin
+    if (_T) begin
+      kreg <= key;
+    end else begin
+      kreg <= kdat2;
+    end
+    if (_T) begin
+      dreg <= state_in;
+    end else begin
+      dreg <= dat3;
+      round <= _T_3;
+    end
+  end
+endmodule
